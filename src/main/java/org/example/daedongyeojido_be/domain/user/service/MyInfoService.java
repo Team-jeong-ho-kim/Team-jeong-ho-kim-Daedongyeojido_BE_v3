@@ -3,7 +3,7 @@ package org.example.daedongyeojido_be.domain.user.service;
 
 import lombok.RequiredArgsConstructor;
 import org.example.daedongyeojido_be.domain.user.domain.User;
-import org.example.daedongyeojido_be.domain.user.facade.UserFaced;
+import org.example.daedongyeojido_be.domain.user.facade.UserFacade;
 import org.example.daedongyeojido_be.domain.user.presentation.dto.Response.MyInfoResponse;
 import org.example.daedongyeojido_be.domain.user.repository.UserRepository;
 import org.springframework.stereotype.Service;
@@ -15,7 +15,7 @@ public class MyInfoService {
 
     private final UserRepository userRepository;
 
-    private final UserFaced userFaced;
+    private final UserFacade userFaced;
 
     @Transactional(readOnly = true)
     public MyInfoResponse myInfo(){
