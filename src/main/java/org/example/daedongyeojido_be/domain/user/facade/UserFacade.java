@@ -12,7 +12,7 @@ import org.springframework.stereotype.Component;
 
 @Component
 @RequiredArgsConstructor
-public class UserFaced {
+public class UserFacade {
 
     private final UserRepository userRepository;
 
