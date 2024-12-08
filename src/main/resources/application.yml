@@ -15,10 +15,7 @@ spring:
     username: ${DB_NAME}
     password: ${DB_PASSWORD}
   #
-  servlet:
-    multipart:
-      max-file-size: 10MB
-      max-request-size: 10MB
+
   jpa:
     database-platform: org.hibernate.dialect.MySQL8Dialect
     open-in-view: false
@@ -30,5 +27,33 @@ redis:
   host: localhost
   port: 6379
 
+  cloud:
+    aws:
+      credentials:
+        access-key: ${AWS_ACCESS_KEY_ID}
+        secret-key: ${AWS_SECRET_ACCESS_KEY}
+      s3:
+        bucket: ${AWS_BUCKET}
+      stack:
+        auto: false
+      region:
+        static: ${AWS_REGION}
 
+  aws:
+    s3:
+      url: https://entry-mini.s3.ap-northeast-2.amazonaws.com/
+      bucket: ${AWS_BUCKET}
+      banner-folder: ${BANNER_IMAGE_FOLDER}
+      club-immage-folder: ${CLUB_IMMAGE_FOLDER}
+      profile-image-folder: ${PROFILE_IMAGE_FOLDER}
 
+  jackson:
+    property-naming-strategy: SNAKE_CASE
+
+  servlet:
+    multipart:
+      max-file-size: 10MB
+      max-request-size: 10MB
+default:
+  profile:
+    image-url: ${DEFAULT_PROFILE_IMAGE}
