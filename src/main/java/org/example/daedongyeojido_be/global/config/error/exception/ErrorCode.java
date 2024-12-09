@@ -15,17 +15,27 @@ public enum ErrorCode {
 
     // user
     USER_NOT_FOUND(404, "일치하는 유저가 존재하지 않습니다."),
+    CLUB_NOT_FOUND(404,"동아리를 찾을 수 없습니다."),
     USER_MISMATCH(401, "유저가 일치하지 않습니다."),
     PASSWORD_MISMATCH(401, "비밀번호가 일치하지 않습니다."),
     INVALID_USER(401, "유효하지 않는 사용자입니다."),
     USER_ALREADY_TAKEN(401, "이미 유저가 있습니다"),
 
     // general
-    BAD_REQUEST(400, "프론트 탓이 확실하다.."),
-    INTERNAL_SERVER_ERROR(500, "서버 탓일 수도 있고.."),
+    BAD_REQUEST(400, "프론트 문제"),
+    INTERNAL_SERVER_ERROR(500, "서버 문제"),
 
     // key
-    INVALID_KEY(401, "잘못된 key입니다.");
+    INVALID_KEY(401, "잘못된 key입니다."),
+
+    //feign
+    FEIGN_BAD_REQUEST(400, "Feign Bad Request"),
+    FEIGN_UNAUTHORIZED(401,"Feign Unauthorized"),
+    FEIGN_FORBIDDEN(403,"Feign Forbidden"),
+
+    FAIL_FILE(500, "파일 업로드 실패");
+
+
 
     private final int statusCode;
     private final String message;
