@@ -41,7 +41,7 @@ redis:
 
 aws:
   s3:
-    url: https://entry-mini.s3.ap-northeast-2.amazonaws.com/
+    url: ${AWS_URL}
     bucket: ${AWS_BUCKET}
     banner-folder: ${BANNER_IMAGE_FOLDER}
     club-image-folder: ${CLUB_IMAGE_FOLDER}
