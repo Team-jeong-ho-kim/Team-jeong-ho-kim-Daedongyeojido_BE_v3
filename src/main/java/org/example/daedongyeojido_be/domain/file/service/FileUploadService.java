@@ -24,7 +24,6 @@ class FileUploadService {
     private final AwsS3Properties s3Properties;
 
     void uploadFile(MultipartFile multipartFile, String key) {
-        try {
             // S3 파일 업로드 처리
             s3Operations.upload(
                     s3Properties.bucket(),
@@ -34,19 +33,5 @@ class FileUploadService {
                             .contentType(multipartFile.getContentType())
                             .build()
             );
-            logger.info("File uploaded successfully to S3 with key: {}", key);
-        } catch (IOException e) {
-            // 파일 업로드 관련 I/O 예외 처리
-            logger.error("File upload failed due to I/O error: {}", e.getMessage(), e);
-
-        } catch (S3Exception e) {
-            // S3 관련 오류 처리
-            logger.error("S3 upload failed: {}", e.getMessage(), e);
-
-        } catch (Exception e) {
-            // 기타 예기치 못한 예외 처리
-            logger.error("Unexpected error during file upload: {}", e.getMessage(), e);
-
-        }
     }
 }
