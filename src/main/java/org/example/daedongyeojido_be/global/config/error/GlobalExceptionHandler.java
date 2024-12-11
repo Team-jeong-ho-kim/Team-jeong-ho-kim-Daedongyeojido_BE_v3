@@ -2,7 +2,7 @@ package org.example.daedongyeojido_be.global.config.error;
 
 import jakarta.validation.ConstraintViolationException;
 import lombok.extern.slf4j.Slf4j;
-import org.example.daedongyeojido_be.global.config.error.exception.DayException;
+import org.example.daedongyeojido_be.global.config.error.exception.DaeDongException;
 import org.example.daedongyeojido_be.global.config.error.exception.ErrorCode;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -14,8 +14,8 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 public class GlobalExceptionHandler {
 
     //비즈니스 로직에서의 에러
-    @ExceptionHandler(DayException.class)
-    public ResponseEntity<ErrorResponse> handleDayException(DayException e) {
+    @ExceptionHandler(DaeDongException.class)
+    public ResponseEntity<ErrorResponse> handleDayException(DaeDongException e) {
         ErrorCode errorCode = e.getErrorCode();
         ErrorResponse response = ErrorResponse.of(errorCode, errorCode.getMessage());
         e.printStackTrace();

@@ -6,7 +6,7 @@ import jakarta.servlet.FilterChain;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import lombok.RequiredArgsConstructor;
-import org.example.daedongyeojido_be.global.config.error.exception.DayException;
+import org.example.daedongyeojido_be.global.config.error.exception.DaeDongException;
 import org.example.daedongyeojido_be.global.config.error.exception.ErrorCode;
 import org.springframework.web.filter.OncePerRequestFilter;
 
@@ -26,7 +26,7 @@ public class GlobalExceptionFilter extends OncePerRequestFilter {
 
         try {
             filterChain.doFilter(request,response);
-        } catch (DayException e){
+        } catch (DaeDongException e){
             ErrorCode errorCode = e.getErrorCode();
             writerErrorResponse(response, errorCode.getStatusCode(), ErrorResponse.of(errorCode, errorCode.getMessage()));
         } catch (Exception e){

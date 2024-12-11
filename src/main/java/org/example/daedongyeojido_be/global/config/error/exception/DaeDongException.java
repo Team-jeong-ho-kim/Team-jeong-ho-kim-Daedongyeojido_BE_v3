@@ -5,7 +5,7 @@ import lombok.Getter;
 
 @Getter
 @AllArgsConstructor
-public class DayException extends RuntimeException{
+public class DaeDongException extends RuntimeException{
     private final ErrorCode errorCode;
 
 
