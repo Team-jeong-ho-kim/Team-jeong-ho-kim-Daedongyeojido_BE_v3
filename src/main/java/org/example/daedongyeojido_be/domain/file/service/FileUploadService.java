@@ -1,9 +1,7 @@
 package org.example.daedongyeojido_be.domain.file.service;
 
 
-import io.awspring.cloud.autoconfigure.s3.properties.S3Properties;
 import io.awspring.cloud.s3.ObjectMetadata;
-import io.awspring.cloud.s3.S3Exception;
 import io.awspring.cloud.s3.S3Operations;
 import lombok.RequiredArgsConstructor;
 import org.example.daedongyeojido_be.infrastructure.s3.AwsS3Properties;
@@ -18,7 +16,7 @@ import java.io.IOException;
 @RequiredArgsConstructor
 class FileUploadService {
 
-    private static final Logger logger = LoggerFactory.getLogger(FileUploadService.class);
+
 
     private final S3Operations s3Operations;
     private final AwsS3Properties s3Properties;
