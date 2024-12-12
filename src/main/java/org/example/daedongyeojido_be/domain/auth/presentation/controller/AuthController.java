@@ -21,12 +21,11 @@ public class AuthController {
 
     private final LoginService loginService;
 
-    private final RegisterService registerService;
-
     private final ReissueService reissueService;
 
     private final LogoutService logoutService;
 
+    private final RegisterService registerService;
 
     @PostMapping("/login")
     public LoginResponse login(@RequestBody @Valid LoginRequest request) {
@@ -42,7 +41,6 @@ public class AuthController {
     public LoginResponse reissue(@RequestBody @Valid RefreshTokenRequest request) {
         return reissueService.reissue(request);
     }
-
     @PostMapping("/logout")
     public void logout(@RequestBody LogoutRequest logoutRequest) {
         logoutService.logout(logoutRequest);
