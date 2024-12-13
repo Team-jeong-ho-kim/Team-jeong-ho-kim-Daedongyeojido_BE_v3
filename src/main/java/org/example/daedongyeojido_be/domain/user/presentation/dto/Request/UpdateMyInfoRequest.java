@@ -4,19 +4,17 @@ import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
-@Getter
-@NoArgsConstructor(access = AccessLevel.PROTECTED)
-public class UpdateMyInfoRequest {
 
-    private String email;
+public record UpdateMyInfoRequest(
 
-    private String username;
+        String username,
+        String password,
+        String name,
+        String introduce,
+        String profileImageUrl
+) {
 
-    private String password;
 
-    private String name;
-
-    private String introduce;
 
 
 }
