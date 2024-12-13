@@ -29,14 +29,12 @@ public class User {
 
     private String introduce;
 
-    private Role role;
+    private String profileImageUrl;
 
 
-    public void updateMyInfo(String email,String username, String password, String name, String introduce) {
-        this.email = email;
-        this.username = username;
-        this.password = password;
+    public void updateMyInfo(String name, String introduce, String profileImageUrl) {
         this.name = name;
         this.introduce = introduce;
+        this.profileImageUrl = profileImageUrl;
     }
 }
