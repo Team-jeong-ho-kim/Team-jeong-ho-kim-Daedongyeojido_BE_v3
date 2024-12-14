@@ -112,7 +112,8 @@ public class Feed {
     }
 
     public void minusLike() {
-        this.heart -= 1;
+        if(this.heart > 0)
+            this.heart -= 1;
     }
 
 }
