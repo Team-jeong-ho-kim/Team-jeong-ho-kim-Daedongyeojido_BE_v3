@@ -25,7 +25,21 @@ public enum ErrorCode {
     INTERNAL_SERVER_ERROR(500, "서버 탓일 수도 있고.."),
 
     // key
-    INVALID_KEY(401, "잘못된 key입니다.");
+    INVALID_KEY(401, "잘못된 key입니다."),
+
+    //comment
+    COMMENT_NOT_FOUND(404, "Cannot Found Comment."),
+    CANNOT_DELETE_COMMENT(403, "Cannot Delete Comment."),
+    CANNOT_MODIFY_COMMENT(403, "Cannot Modify Comment."),
+
+    //feed
+    FEED_NOT_FOUND(404, "Feed Not Found."),
+    CANNOT_DELETE_FEED(403, "Cannot Delete Feed."),
+    CANNOT_MODIFY_FEED(403, "Cannot Modify Feed."),
+
+    //like
+    LIKE_EXIST(409, "Like Exist."),
+    CANNOT_DELETE_LIKE(409, "Cannot Delete Like.");
 
     private final int statusCode;
     private final String message;
