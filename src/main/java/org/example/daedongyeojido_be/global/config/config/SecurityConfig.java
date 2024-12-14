@@ -4,6 +4,7 @@ package org.example.daedongyeojido_be.global.config.config;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.RequiredArgsConstructor;
+import org.example.daedongyeojido_be.global.config.security.jwt.JwtTokenFilter;
 import org.example.daedongyeojido_be.global.config.security.jwt.JwtTokenProvider;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -15,6 +16,7 @@ import org.springframework.security.config.annotation.web.configurers.AbstractHt
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
 @RequiredArgsConstructor
 @Configuration
@@ -59,6 +61,7 @@ public class SecurityConfig  {
                         .requestMatchers("/user/update","/user/delete/","/user/my-info").permitAll()
                         .requestMatchers("/admin").hasRole("ADMIN")
                         // "/admin"이라는 경로는 역할이 "ADMIN"인 사람만 접근할 수 있다.
+                        .requestMatchers("/feed").permitAll()
                         .anyRequest().authenticated());
         // 다른 모든 요청은 인증된 사용자만 접근할 수 있다.
 
@@ -68,6 +71,7 @@ public class SecurityConfig  {
                         .sessionCreationPolicy(SessionCreationPolicy.STATELESS));
         // 세션 : STATELESS, 비활성화 시킴
 
+        http.addFilterBefore(new JwtTokenFilter(jwtTokenProvider), UsernamePasswordAuthenticationFilter.class);
 
         return http.build();
         // 필터체인에 결과를 반환
