@@ -5,6 +5,7 @@ import lombok.RequiredArgsConstructor;
 import org.example.daedongyeojido_be.domain.feed.presentation.dto.request.FeedRequest;
 import org.example.daedongyeojido_be.domain.feed.presentation.dto.response.FeedDetailResponse;
 import org.example.daedongyeojido_be.domain.feed.presentation.dto.response.FeedListResponse;
+import org.example.daedongyeojido_be.domain.feed.presentation.dto.response.TemporaryFeedListResponse;
 import org.example.daedongyeojido_be.domain.feed.service.*;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
@@ -21,6 +22,8 @@ public class FeedController {
     private final DeleteFeedService deleteFeedService;
     private final QueryMyAllFeedsService queryMyAllFeedsService;
     private final QueryFeedDetailService queryFeedDetailService;
+    private final TemporarySaveFeedService temporarySaveFeedService;
+    private final QueryTemporarySaveFeedsService queryTemporarySaveFeedsService;
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
@@ -48,6 +51,17 @@ public class FeedController {
     @GetMapping("/{feed-id}")
     public FeedDetailResponse getFeed(@PathVariable("feed-id") Long feedId) {
         return queryFeedDetailService.getFeedDetail(feedId);
+    }
+
+    @PostMapping("/temporary")
+    @ResponseStatus(HttpStatus.CREATED)
+    public void temporarySave(@RequestBody FeedRequest request) {
+        temporarySaveFeedService.temporarySave(request);
+    }
+
+    @GetMapping("/temporary")
+    public List<TemporaryFeedListResponse> temporaryList() {
+        return queryTemporarySaveFeedsService.getTemporaryFeeds();
     }
 
 }
