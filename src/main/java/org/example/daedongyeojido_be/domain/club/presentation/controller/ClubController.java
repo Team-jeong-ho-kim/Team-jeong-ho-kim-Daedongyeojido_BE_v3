@@ -25,7 +25,7 @@ public class ClubController {
     private final ClubAllInfoService clubAllInfoService;
 
     @ResponseStatus(HttpStatus.OK)
-    @GetMapping("/info/{id}")
+    @GetMapping("/info/{clubName}")
     public ClubInfoResponse clubInfo(@PathVariable String clubName){
         return clubInfoService.getClubInfo(clubName);
     }
