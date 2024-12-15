@@ -4,6 +4,7 @@ import com.querydsl.core.types.Projections;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 import lombok.RequiredArgsConstructor;
 import org.example.daedongyeojido_be.domain.comment.domain.QComment;
+import org.example.daedongyeojido_be.domain.feed.domain.Feed;
 import org.example.daedongyeojido_be.domain.feed.domain.QFeed;
 import org.example.daedongyeojido_be.domain.feed.presentation.dto.response.FeedDetailResponse;
 import org.example.daedongyeojido_be.domain.feed.presentation.dto.response.FeedListResponse;
@@ -12,6 +13,7 @@ import org.example.daedongyeojido_be.domain.feed.presentation.dto.response.Tempo
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+import java.util.Optional;
 
 @Repository
 @RequiredArgsConstructor
@@ -26,7 +28,7 @@ public class FeedRepositoryImpl implements FeedRepositoryCustom {
     public List<FeedListResponse> findMyFeedsByUserId(Long userId) {
         return queryFactory
                 .select(Projections.constructor(FeedListResponse.class, qFeed.id, qFeed.user.username, qFeed.title, qFeed.introduction,
-                        qFeed.isPublished, qFeed.createdAt, qFeed.heart, qComment.count().intValue()))
+                        qFeed.isPublished, qFeed.createdAt, qFeed.heart))
                 .from(qFeed)
                 .leftJoin(qFeed.comments, qComment)
                 .where(qFeed.user.id.eq(userId).and(qFeed.isPublished.eq(true)))
@@ -36,12 +38,12 @@ public class FeedRepositoryImpl implements FeedRepositoryCustom {
     }
 
     @Override
-    public FeedDetailResponse findByFeedId(Long feedId) {
+    public FeedDetailResponse findByFeedUrl(String feedUrl) {
         return queryFactory
-                .select(new QFeedDetailResponse(qFeed.id, qFeed.user.username, qFeed.title,
+                .select(new QFeedDetailResponse(qFeed.id, qFeed.userName, qFeed.title,
                         qFeed.content, qFeed.createdAt, qFeed.heart))
                 .from(qFeed)
-                .where(qFeed.id.eq(feedId))
+                .where(qFeed.feedUrl.eq(feedUrl))
                 .fetchOne();
     }
 
@@ -52,6 +54,16 @@ public class FeedRepositoryImpl implements FeedRepositoryCustom {
                 .from(qFeed)
                 .where(qFeed.user.id.eq(userId).and(qFeed.isPublished.eq(false)))
                 .orderBy(qFeed.updatedAt.desc())
+                .fetch();
+    }
+
+    @Override
+    public List<FeedListResponse> getFeeds() {
+        return queryFactory
+                .select(Projections.constructor(FeedListResponse.class, qFeed.id, qFeed.userName,
+                        qFeed.title, qFeed.introduction, qFeed.createdAt, qFeed.heart))
+                .from(qFeed)
+                .orderBy(qFeed.createdAt.desc())
                 .fetch();
     }
 
