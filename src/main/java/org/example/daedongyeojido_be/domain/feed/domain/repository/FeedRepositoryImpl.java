@@ -8,6 +8,7 @@ import org.example.daedongyeojido_be.domain.feed.domain.QFeed;
 import org.example.daedongyeojido_be.domain.feed.presentation.dto.response.FeedDetailResponse;
 import org.example.daedongyeojido_be.domain.feed.presentation.dto.response.FeedListResponse;
 import org.example.daedongyeojido_be.domain.feed.presentation.dto.response.QFeedDetailResponse;
+import org.example.daedongyeojido_be.domain.feed.presentation.dto.response.TemporaryFeedListResponse;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -28,7 +29,7 @@ public class FeedRepositoryImpl implements FeedRepositoryCustom {
                         qFeed.isPublished, qFeed.createdAt, qFeed.heart, qComment.count().intValue()))
                 .from(qFeed)
                 .leftJoin(qFeed.comments, qComment)
-                .where(qFeed.user.id.eq(userId))
+                .where(qFeed.user.id.eq(userId).and(qFeed.isPublished.eq(true)))
                 .groupBy(qFeed.id)
                 .orderBy(qFeed.createdAt.desc())
                 .fetch();
@@ -45,11 +46,12 @@ public class FeedRepositoryImpl implements FeedRepositoryCustom {
     }
 
     @Override
-    public List<FeedListResponse> findTemporaryFeedsByUserId(Long userId) {
+    public List<TemporaryFeedListResponse> findTemporaryFeedsByUserId(Long userId) {
         return queryFactory
-                .select(Projections.constructor(FeedListResponse.class, qFeed.id, qFeed.title, qFeed.content))
+                .select(Projections.constructor(TemporaryFeedListResponse.class, qFeed.id, qFeed.title, qFeed.introduction, qFeed.updatedAt))
                 .from(qFeed)
-                .where(qFeed.user.id.eq(userId))
+                .where(qFeed.user.id.eq(userId).and(qFeed.isPublished.eq(false)))
+                .orderBy(qFeed.updatedAt.desc())
                 .fetch();
     }
 
