@@ -36,6 +36,7 @@ public enum ErrorCode {
     FEED_NOT_FOUND(404, "Feed Not Found."),
     CANNOT_DELETE_FEED(403, "Cannot Delete Feed."),
     CANNOT_MODIFY_FEED(403, "Cannot Modify Feed."),
+    CANNOT_CREATE_FEED(403, "Cannot Create Feed"),
 
     //like
     LIKE_EXIST(409, "Like Exist."),
