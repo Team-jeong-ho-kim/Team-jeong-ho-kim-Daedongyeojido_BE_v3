@@ -29,6 +29,7 @@ public class User {
 
     private String introduce;
 
+    @Enumerated(EnumType.STRING)
     private Role role;
 
 
