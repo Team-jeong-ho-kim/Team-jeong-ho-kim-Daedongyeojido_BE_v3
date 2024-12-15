@@ -49,7 +49,7 @@ public class Feed {
     private int heart;
 
     @Column(nullable = false)
-    private boolean isPublished = false;
+    private boolean isPublished;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user-id", nullable = false)
