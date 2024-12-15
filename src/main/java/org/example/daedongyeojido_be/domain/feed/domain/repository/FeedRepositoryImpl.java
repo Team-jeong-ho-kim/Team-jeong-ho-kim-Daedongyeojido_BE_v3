@@ -21,7 +21,6 @@ public class FeedRepositoryImpl implements FeedRepositoryCustom {
 
     private final JPAQueryFactory queryFactory;
     private final QFeed qFeed = QFeed.feed;
-    private final QComment qComment = QComment.comment1;
 
     // 자신이 작성한 글 목록 조회
     @Override
@@ -30,7 +29,6 @@ public class FeedRepositoryImpl implements FeedRepositoryCustom {
                 .select(Projections.constructor(FeedListResponse.class, qFeed.id, qFeed.user.username, qFeed.title, qFeed.introduction,
                         qFeed.isPublished, qFeed.createdAt, qFeed.heart))
                 .from(qFeed)
-                .leftJoin(qFeed.comments, qComment)
                 .where(qFeed.user.id.eq(userId).and(qFeed.isPublished.eq(true)))
                 .groupBy(qFeed.id)
                 .orderBy(qFeed.createdAt.desc())
