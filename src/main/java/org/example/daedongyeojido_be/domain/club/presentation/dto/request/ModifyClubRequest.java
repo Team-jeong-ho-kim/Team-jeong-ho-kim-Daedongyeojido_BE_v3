@@ -5,7 +5,7 @@ import jakarta.validation.constraints.Size;
 
 public record ModifyClubRequest(
 
-        Long clubId,
+
         @NotBlank
         @Size(min = 1, max = 20, message = "동아리 이름은 1글자 이상, 20글자 이하여야 합니다.")
         String clubName,
