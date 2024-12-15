@@ -36,9 +36,6 @@ public class Feed {
     @Column(columnDefinition = "VARCHAR(100)")
     private String feedUrl;
 
-    @ElementCollection
-    private List<String> tags;
-
     @Column(nullable = false, updatable = false)
     private LocalDateTime createdAt;
 
@@ -50,6 +47,9 @@ public class Feed {
 
     @Column(nullable = false)
     private boolean isPublished;
+
+    @Column(nullable = false)
+    private String userName;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user-id", nullable = false)
@@ -81,30 +81,29 @@ public class Feed {
         if (introduction.isEmpty()) {
             return content.substring(0, 150);
         } else {
-            return introduction;
+            return introduction.substring(0, 150);
         }
     }
 
     @Builder
-    public Feed(String title, String content, String previewImageUrl, String introduction, String feedUrl, List<String> tags, int heart, boolean isPublished, User user) {
+    public Feed(String title, String content, String previewImageUrl, String introduction, String feedUrl, int heart, boolean isPublished, User user, String userName) {
         this.title = title;
         this.content = content;
         this.previewImageUrl = previewImageUrl;
         this.introduction = generateIntroduction(introduction);
         this.feedUrl = generateUrl(feedUrl);
-        this.tags = tags;
         this.heart = heart;
         this.isPublished = isPublished;
         this.user = user;
+        this.userName = userName;
     }
 
-    public void updateFeed(String title, String content, String previewImageUrl, String introduction, String feedUrl, boolean isPublished) {
+    public void updateFeed(String title, String content, String introduction, String feedUrl, String userName) {
         this.title = title;
         this.content = content;
-        this.previewImageUrl = previewImageUrl;
         this.introduction = generateIntroduction(introduction);
         this.feedUrl = generateUrl(feedUrl);
-        this.isPublished = isPublished;
+        this.userName = userName;
     }
 
     public void plusLike() {

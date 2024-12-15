@@ -17,12 +17,8 @@ public class FeedListResponse {
 
     private String introduction;
 
-    private boolean isPublished;
-
     private LocalDateTime createdAt;
 
     private int heart;
-
-    private int commentsCount;
 
 }

@@ -16,14 +16,7 @@ public class FeedRequest {
     @Size(max = 10000, message = "글내용은 10000자 이내로 입력해주세요.")
     private String content;
 
-    private String previewImageUrl;
-
-    @Size(max = 150, message = "글 소개는 150자 아내로 입력해주세요.")
-    private String introduction;
-
-    @Size(max = 100, message = "url은 100자 이내로 입력해주세요.")
-    private String url;
-
-    private boolean isPublished;
+    @Size(max = 10, message = "유저 이름은 10자 이내로 입력해주세요.")
+    private String userName;
 
 }
