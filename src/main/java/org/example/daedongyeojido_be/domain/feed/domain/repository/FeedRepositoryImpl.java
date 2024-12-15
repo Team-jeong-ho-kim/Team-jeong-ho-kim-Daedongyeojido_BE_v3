@@ -3,8 +3,6 @@ package org.example.daedongyeojido_be.domain.feed.domain.repository;
 import com.querydsl.core.types.Projections;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 import lombok.RequiredArgsConstructor;
-import org.example.daedongyeojido_be.domain.comment.domain.QComment;
-import org.example.daedongyeojido_be.domain.feed.domain.Feed;
 import org.example.daedongyeojido_be.domain.feed.domain.QFeed;
 import org.example.daedongyeojido_be.domain.feed.presentation.dto.response.FeedDetailResponse;
 import org.example.daedongyeojido_be.domain.feed.presentation.dto.response.FeedListResponse;
@@ -13,7 +11,6 @@ import org.example.daedongyeojido_be.domain.feed.presentation.dto.response.Tempo
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
-import java.util.Optional;
 
 @Repository
 @RequiredArgsConstructor
