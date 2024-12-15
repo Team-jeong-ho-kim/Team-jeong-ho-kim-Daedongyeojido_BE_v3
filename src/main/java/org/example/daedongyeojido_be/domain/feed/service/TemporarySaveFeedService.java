@@ -23,9 +23,8 @@ public class TemporarySaveFeedService {
         feedRepository.save(Feed.builder()
                 .title(request.getTitle())
                 .content(request.getContent())
-                .previewImageUrl(request.getPreviewImageUrl())
-                .introduction(request.getIntroduction())
-                .feedUrl(request.getUrl())
+                .introduction(request.getContent())
+                .feedUrl(request.getTitle())
                 .isPublished(false)
                 .user(user)
                 .build());

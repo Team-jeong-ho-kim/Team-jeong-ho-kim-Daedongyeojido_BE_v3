@@ -6,6 +6,7 @@ import org.example.daedongyeojido_be.domain.feed.domain.repository.FeedRepositor
 import org.example.daedongyeojido_be.domain.feed.exception.CannotDeleteFeedException;
 import org.example.daedongyeojido_be.domain.feed.facade.FeedFacade;
 import org.example.daedongyeojido_be.domain.user.domain.User;
+import org.example.daedongyeojido_be.domain.user.domain.enums.Role;
 import org.example.daedongyeojido_be.domain.user.facade.UserFacade;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -21,6 +22,9 @@ public class DeleteFeedService {
     @Transactional
     public void deleteFeed(Long feedId) {
         User user = userFacade.currentUser();
+        if(!user.getRole().equals(Role.ADMIN)) {
+            throw CannotDeleteFeedException.EXCEPTION;
+        }
         Feed feed = feedFacade.getFeed(feedId);
 
         if(!user.getId().equals(feed.getUser().getId())) {
