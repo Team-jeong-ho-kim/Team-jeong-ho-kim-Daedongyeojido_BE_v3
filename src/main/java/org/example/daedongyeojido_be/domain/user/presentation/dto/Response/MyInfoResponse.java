@@ -5,15 +5,12 @@ import lombok.Builder;
 import lombok.Getter;
 
 @Builder
-@Getter
-@AllArgsConstructor
-public class MyInfoResponse {
+public record MyInfoResponse(
+        String name,
+        String introduce,
+        String profileImageUrl
 
-    private String username;
+) {
 
-    private String password;
 
-    private String name;
-
-    private String introduce;
 }

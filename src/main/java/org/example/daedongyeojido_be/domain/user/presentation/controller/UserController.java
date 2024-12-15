@@ -21,7 +21,7 @@ public class UserController {
 
     private final DeleteUserService deleteUserService;
 
-    @GetMapping("/my-info")
+    @GetMapping("/info")
     public MyInfoResponse myInfo(){
         return myInfoService.myInfo();
     }

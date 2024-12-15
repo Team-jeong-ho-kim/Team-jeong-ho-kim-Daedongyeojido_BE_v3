@@ -23,10 +23,9 @@ public class MyInfoService {
         User user = userFaced.currentUser();
 
         return MyInfoResponse.builder()
-                .username(user.getUsername())
-                .password(user.getPassword())
                 .name(user.getName())
                 .introduce(user.getIntroduce())
+                .profileImageUrl(user.getProfileImageUrl())
                 .build();
     }
 }
