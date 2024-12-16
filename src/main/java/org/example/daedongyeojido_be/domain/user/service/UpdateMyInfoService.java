@@ -24,16 +24,13 @@ public class UpdateMyInfoService {
 
         User user = userFaced.currentUser();
 
-        if (!passwordEncoder.matches(request.getPassword(), user.getPassword()))
+        if (!passwordEncoder.matches(request.password(), user.getPassword()))
             throw PasswordMismatchException.EXCEPTION;
 
         user.updateMyInfo(
-                request.getEmail(),
-                request.getUsername(),
-                passwordEncoder.encode(request.getPassword()),
-                request.getName(),
-                request.getIntroduce());
-
+                request.name(),
+                request.introduce(),
+                request.profileImageUrl());
     }
 
 
