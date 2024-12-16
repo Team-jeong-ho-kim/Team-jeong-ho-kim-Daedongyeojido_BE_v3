@@ -20,6 +20,7 @@ public enum ErrorCode {
     PASSWORD_MISMATCH(401, "비밀번호가 일치하지 않습니다."),
     INVALID_USER(401, "유효하지 않는 사용자입니다."),
     USER_ALREADY_TAKEN(401, "이미 유저가 있습니다"),
+    NOT_AUTHENTICATED(401, "권한이 없습니다."),
 
     // general
     BAD_REQUEST(400, "프론트 문제"),
@@ -33,7 +34,10 @@ public enum ErrorCode {
     FEIGN_UNAUTHORIZED(401,"Feign Unauthorized"),
     FEIGN_FORBIDDEN(403,"Feign Forbidden"),
 
-    FAIL_FILE(500, "파일 업로드 실패");
+    FAIL_FILE(500, "파일 업로드 실패"),
+
+    //resume
+    RESUME_NOT_FOUND(404, "지원서를 찾을 수 없습니다.");
 
 
 
