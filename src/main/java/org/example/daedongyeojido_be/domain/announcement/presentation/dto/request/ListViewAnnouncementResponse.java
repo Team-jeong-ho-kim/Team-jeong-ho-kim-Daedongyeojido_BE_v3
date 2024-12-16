@@ -6,7 +6,7 @@ import org.example.daedongyeojido_be.domain.announcement.domain.AnnouncementList
 
 import java.util.List;
 
-@Getter
+
 @Builder
 public record ListViewAnnouncementResponse(
         List<AnnouncementListElement> announcementList
