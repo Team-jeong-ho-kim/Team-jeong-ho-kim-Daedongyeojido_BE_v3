@@ -14,7 +14,6 @@ import org.springframework.stereotype.Service;
 @RequiredArgsConstructor
 public class UpdateMyInfoService {
 
-    private final UserRepository userRepository;
 
     private final UserFacade userFaced;
 
@@ -32,6 +31,4 @@ public class UpdateMyInfoService {
                 request.introduce(),
                 request.profileImageUrl());
     }
-
-
 }

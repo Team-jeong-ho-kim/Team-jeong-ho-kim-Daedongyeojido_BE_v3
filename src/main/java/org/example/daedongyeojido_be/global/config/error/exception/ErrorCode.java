@@ -33,7 +33,9 @@ public enum ErrorCode {
     FEIGN_UNAUTHORIZED(401,"Feign Unauthorized"),
     FEIGN_FORBIDDEN(403,"Feign Forbidden"),
 
-    FAIL_FILE(500, "파일 업로드 실패");
+    FAIL_FILE(500, "파일 업로드 실패"),
+
+    UN_AUTHORIZE_EXCEPTION(401, "인증이 되지 않았습니다.");
 
 
 

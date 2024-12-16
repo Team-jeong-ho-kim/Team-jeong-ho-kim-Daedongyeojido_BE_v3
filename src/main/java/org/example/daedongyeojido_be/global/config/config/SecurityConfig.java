@@ -56,7 +56,7 @@ public class SecurityConfig  {
                 .authorizeHttpRequests((auth)->auth
                         .requestMatchers("/","/auth","/user","/auth/register","/auth/login","auth/logout").permitAll()
                         // 해당 경로에 대한 모든 접근을 허용한다.
-                        .requestMatchers("/user/update","/user/delete/","/user/my-info","/file/image","/file").permitAll()
+                        .requestMatchers("/user/update","/user/delete/{id}","/file/image","/file","club/modify","club/","club/all","/club/info/","club/info/{id}","/user/info","/user/delete/").permitAll()
                         .requestMatchers("/admin").hasRole("ADMIN")
                         // "/admin"이라는 경로는 역할이 "ADMIN"인 사람만 접근할 수 있다.
                         .anyRequest().authenticated());

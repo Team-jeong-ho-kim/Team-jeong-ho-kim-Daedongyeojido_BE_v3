@@ -7,7 +7,6 @@ import lombok.NoArgsConstructor;
 
 public record UpdateMyInfoRequest(
 
-        String username,
         String password,
         String name,
         String introduce,
