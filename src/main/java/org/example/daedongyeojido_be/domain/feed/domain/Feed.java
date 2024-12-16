@@ -52,7 +52,7 @@ public class Feed {
     private String userName;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "user-id", nullable = false)
+    @JoinColumn(name = "user-id")
     private User user;
 
     @OneToMany(mappedBy = "feed")
@@ -81,7 +81,11 @@ public class Feed {
         if (introduction.isEmpty()) {
             return content.substring(0, 150);
         } else {
-            return introduction.substring(0, 150);
+            if(introduction.length() >= 150) {
+                return introduction.substring(0, 150);
+            } else {
+                return introduction;
+            }
         }
     }
 
