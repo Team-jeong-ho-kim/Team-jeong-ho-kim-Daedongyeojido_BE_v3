@@ -22,6 +22,9 @@ configurations {
 repositories {
     mavenCentral()
 }
+tasks.named('bootJar') {
+    duplicatesStrategy = DuplicatesStrategy.EXCLUDE
+}
 
 dependencies {
 
