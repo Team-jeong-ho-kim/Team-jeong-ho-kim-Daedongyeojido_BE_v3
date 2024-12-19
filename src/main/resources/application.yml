@@ -27,7 +27,7 @@ spring:
       ddl-auto: update
 
 redis:
-  host: localhost
+  host: ${REDIS_HOST}
   port: 6379
 
 http:
