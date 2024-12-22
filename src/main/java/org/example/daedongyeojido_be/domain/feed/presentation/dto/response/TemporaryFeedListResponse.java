@@ -13,8 +13,4 @@ public class TemporaryFeedListResponse {
 
     private String title;
 
-    private String introduction;
-
-    private LocalDateTime updatedAt;
-
 }

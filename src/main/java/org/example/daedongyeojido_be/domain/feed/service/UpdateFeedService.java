@@ -16,7 +16,7 @@ public class UpdateFeedService {
     @Transactional
     public void updateFeed(Long feedId, FeedRequest request) {
         Feed feed = feedFacade.getFeed(feedId);
-        feed.updateFeed(request.getTitle(), request.getContent(), request.getContent(), request.getTitle(), request.getUserName());
+        feed.updateFeed(request.getTitle(), request.getContent(), request.getUserName(), request.getCreatedAt());
     }
 
 }
