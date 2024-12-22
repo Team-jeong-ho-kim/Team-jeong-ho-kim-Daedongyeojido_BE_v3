@@ -8,9 +8,9 @@ import java.util.List;
 
 public interface FeedRepositoryCustom {
 
-    List<FeedListResponse> findMyFeedsByUserId(Long userId);
+    //List<FeedListResponse> findMyFeedsByUserId(Long userId);
     FeedDetailResponse findByFeedUrl(String feedUrl);
-    List<TemporaryFeedListResponse> findTemporaryFeedsByUserId(Long userId);
+    //List<TemporaryFeedListResponse> findTemporaryFeedsByUserId(Long userId);
     List<FeedListResponse> getFeeds();
 
 }
