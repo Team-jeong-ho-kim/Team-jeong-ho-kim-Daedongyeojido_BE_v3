@@ -15,10 +15,6 @@ public class FeedListResponse {
 
     private String title;
 
-    private String introduction;
-
-    private LocalDateTime createdAt;
-
-    private int heart;
+    private String createdAt;
 
 }

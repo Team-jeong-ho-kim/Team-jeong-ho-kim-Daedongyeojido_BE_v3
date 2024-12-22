@@ -16,18 +16,15 @@ public class FeedDetailResponse {
 
     private String content;
 
-    private LocalDateTime createdAt;
-
-    private int heart;
+    private String createdAt;
 
     @QueryProjection
-    public FeedDetailResponse(Long feedId, String userName, String title, String content, LocalDateTime createdAt, int heart) {
+    public FeedDetailResponse(Long feedId, String userName, String title, String content, String createdAt) {
         this.feedId = feedId;
         this.userName = userName;
         this.title = title;
         this.content = content;
         this.createdAt = createdAt;
-        this.heart = heart;
     }
 
 }
