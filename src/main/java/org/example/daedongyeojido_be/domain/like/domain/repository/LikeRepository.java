@@ -4,7 +4,9 @@ import org.example.daedongyeojido_be.domain.feed.domain.Feed;
 import org.example.daedongyeojido_be.domain.like.domain.Like;
 import org.example.daedongyeojido_be.domain.user.domain.User;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
 
+@Repository
 public interface LikeRepository extends JpaRepository<Like, Long>{
 
     boolean existsLikeByUserAndFeed(User user, Feed feed);
