@@ -8,6 +8,7 @@ import org.example.daedongyeojido_be.domain.feed.presentation.dto.response.FeedL
 import org.example.daedongyeojido_be.domain.feed.service.*;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
 
@@ -24,8 +25,9 @@ public class FeedController {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public void createFeed(@RequestBody @Valid FeedRequest request) {
-        createFeedService.createFeed(request);
+    public void createFeed(@RequestPart("request") @Valid FeedRequest request,
+                           @RequestPart(value = "file", required = false) MultipartFile file) {
+        createFeedService.createFeed(request, file);
     }
 
     @PatchMapping("/{feed-id}")

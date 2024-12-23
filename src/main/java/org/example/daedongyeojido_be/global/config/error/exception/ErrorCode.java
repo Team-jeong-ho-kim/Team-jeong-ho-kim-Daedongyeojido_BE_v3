@@ -40,7 +40,10 @@ public enum ErrorCode {
 
     //like
     LIKE_EXIST(409, "Like Exist."),
-    CANNOT_DELETE_LIKE(409, "Cannot Delete Like.");
+    CANNOT_DELETE_LIKE(409, "Cannot Delete Like."),
+
+    //image
+    FAIL_FILE(500, "파일 업로드 실패");
 
     private final int statusCode;
     private final String message;
