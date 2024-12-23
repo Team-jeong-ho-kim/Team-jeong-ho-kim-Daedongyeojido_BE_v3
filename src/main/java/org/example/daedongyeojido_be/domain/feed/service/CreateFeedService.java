@@ -19,11 +19,8 @@ public class CreateFeedService {
         feedRepository.save(Feed.builder()
                         .title(request.getTitle())
                         .content(request.getContent())
-                        .introduction(request.getContent())
-                        .feedUrl(request.getTitle())
                         .userName(request.getUserName())
-                        .user(null)
-                        .isPublished(true)
+                        .createdAt(request.getCreatedAt())
                 .build());
     }
 
