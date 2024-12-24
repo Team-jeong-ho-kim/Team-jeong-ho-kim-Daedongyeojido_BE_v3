@@ -2,10 +2,9 @@ package org.example.daedongyeojido_be;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-
 import org.springframework.boot.context.properties.ConfigurationPropertiesScan;
 
-@SpringBootApplication
+@SpringBootApplication(scanBasePackages = {"org.example"})
 @ConfigurationPropertiesScan
 public class DaedongyeojidoBeApplication {
 
