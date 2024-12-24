@@ -17,4 +17,6 @@ public class FeedListResponse {
 
     private String createdAt;
 
+    private String content;
+
 }
