@@ -1,13 +1,12 @@
 package org.example.daedongyeojido_be.domain.feed.domain;
 
 import jakarta.persistence.*;
-import lombok.AccessLevel;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import lombok.*;
+import org.example.daedongyeojido_be.domain.feed.presentation.dto.request.FeedRequest;
 
 @Entity
 @Getter
+@Setter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class Feed {
 
@@ -47,11 +46,14 @@ public class Feed {
         this.createdAt = createdAt;
     }
 
-    public void updateFeed(String title, String content, String userName, String createdAt) {
+    public void updateFeed(String title, String content, String userName, String createdAt, String previewImageUrl) {
         this.title = title;
         this.content = content;
         this.userName = userName;
         this.createdAt = createdAt;
+        if (this.getPreviewImageUrl() != null) {
+            this.previewImageUrl = previewImageUrl;
+        }
     }
 
 }

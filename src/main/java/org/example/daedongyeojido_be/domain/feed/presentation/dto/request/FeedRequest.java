@@ -21,4 +21,6 @@ public class FeedRequest {
 
     private String createdAt;
 
+    private String previewImageUrl;
+
 }
