@@ -32,8 +32,9 @@ public class FeedController {
 
     @PatchMapping("/{feed-id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void updateFeed(@PathVariable("feed-id") Long feedId, @RequestPart @Valid FeedRequest request) {
-        updateFeedService.updateFeed(feedId, request);
+    public void updateFeed(@PathVariable("feed-id") Long feedId, @RequestPart("request") @Valid FeedRequest request,
+                           @RequestPart(value = "file", required = false) MultipartFile file) {
+        updateFeedService.updateFeed(feedId, request, file);
     }
 
     @DeleteMapping("/{feed-id}")
