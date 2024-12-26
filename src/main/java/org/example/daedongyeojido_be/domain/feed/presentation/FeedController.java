@@ -32,7 +32,7 @@ public class FeedController {
 
     @PatchMapping("/{feed-id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void updateFeed(@PathVariable("feed-id") Long feedId, @RequestBody @Valid FeedRequest request) {
+    public void updateFeed(@PathVariable("feed-id") Long feedId, @RequestPart @Valid FeedRequest request) {
         updateFeedService.updateFeed(feedId, request);
     }
 
