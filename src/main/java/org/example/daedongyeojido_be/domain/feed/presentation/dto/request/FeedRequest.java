@@ -13,7 +13,7 @@ public class FeedRequest {
     @Size(max = 50, message = "제목은 50자 이내로 입력해주세요.")
     private String title;
 
-    @Size(max = 10000, message = "글내용은 10000자 이내로 입력해주세요.")
+    @Size(max = 100000, message = "글내용은 100000자 이내로 입력해주세요.")
     private String content;
 
     @Size(max = 10, message = "유저 이름은 10자 이내로 입력해주세요.")
