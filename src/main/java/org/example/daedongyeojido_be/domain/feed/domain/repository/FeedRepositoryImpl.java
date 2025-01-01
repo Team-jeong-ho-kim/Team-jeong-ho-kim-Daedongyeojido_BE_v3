@@ -54,7 +54,7 @@ public class FeedRepositoryImpl implements FeedRepositoryCustom {
     public List<FeedListResponse> getFeeds() {
         return queryFactory
                 .select(Projections.constructor(FeedListResponse.class, qFeed.id, qFeed.userName,
-                        qFeed.title, qFeed.createdAt, qFeed.content))
+                        qFeed.title, qFeed.createdAt, qFeed.content, qFeed.previewImageUrl))
                 .from(qFeed)
                 .fetch();
     }

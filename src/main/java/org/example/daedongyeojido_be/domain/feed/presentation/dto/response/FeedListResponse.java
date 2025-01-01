@@ -19,4 +19,6 @@ public class FeedListResponse {
 
     private String content;
 
+    private String previewImageUrl;
+
 }
