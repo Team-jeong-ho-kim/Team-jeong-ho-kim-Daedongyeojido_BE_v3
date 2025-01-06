@@ -7,11 +7,9 @@ import org.example.daedongyeojido_be.domain.feed.domain.QFeed;
 import org.example.daedongyeojido_be.domain.feed.presentation.dto.response.FeedDetailResponse;
 import org.example.daedongyeojido_be.domain.feed.presentation.dto.response.FeedListResponse;
 import org.example.daedongyeojido_be.domain.feed.presentation.dto.response.QFeedDetailResponse;
-import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
-@Repository
 @RequiredArgsConstructor
 public class FeedRepositoryImpl implements FeedRepositoryCustom {
 
